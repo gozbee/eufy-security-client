@@ -4667,7 +4667,7 @@ export class Lock extends Device {
 
   public processPushNotification(station: Station, message: PushMessage, eventDurationSeconds: number): void {
     super.processPushNotification(station, message, eventDurationSeconds);
-    if (message.event_type !== undefined) {
+    if (message.event_type !== undefined && !this.usesSecurityMqtt()) {
       this.processNotification(
         message.event_type,
         message.event_time,
